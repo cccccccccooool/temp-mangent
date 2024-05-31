@@ -1,7 +1,8 @@
 import hashlib
-from global_vars import *
 import requests
-
+import global_vars
+active = global_vars.active
+flag = global_vars.flag
 
 # 报错统一模板
 def error_1():

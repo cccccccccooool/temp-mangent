@@ -1,7 +1,7 @@
 from usually import *
-from global_vars import *
-
-
+import global_vars
+active=global_vars.active
+flag=global_vars.flag
 def change_info(temp_flag):
     # 懒得做合理性检测了，凡是主键id都不允许被修改
     print("当前仅支持修改\t1.名字和\t2.班别/授课科目")
@@ -66,9 +66,10 @@ def main():
     print("13.修改课程信息")
     print("14.删除课程信息")
     print("0.退出成绩管理系统")
-    get_request = input("请输入你想要进行的活动")
+    get_request = int(input("请输入你想要进行的活动"))
     if get_request == 0:
         print("已退出")
+        exit(0)
     elif get_request == 2:
         select1()
     elif get_request == 3:

@@ -2,14 +2,13 @@ import pyodbc
 from usually import *
 from pypinyin import lazy_pinyin
 
-
 class STUDENTS_MANAGEMENT_SYSTEM:
     def __init__(self, user_name, pwd, flag1):
         # 创建连接字符串
         conn_str = (
             r'DRIVER={SQL Server};'
             r'SERVER=SIHASIHA;'  # 服务器名称
-            r'DATABASE=Teach;'  # 数据库名称
+            r'DATABASE=students_mangement;'  # 数据库名称
             rf'UID=sa;'  # 用户名
             fr'PWD=123456;'  # 密码
         )
@@ -17,14 +16,15 @@ class STUDENTS_MANAGEMENT_SYSTEM:
             # 连接到SQL Server
             # 管理员直接完成验证
             self.conn = pyodbc.connect(conn_str)
+            if not self.__CheckPwd__(user_name, pwd):
+                print("密码错误,请重新输入")
+                return
+
             if flag1 == 3:
                 self.id1 = "114514"
                 self.name = "admit"
                 return
 
-            if not self.__CheckPwd__(user_name, pwd):
-                print("密码错误,请重新输入")
-                return
             self.id1 = self.__get_id__(user_name, pwd)
             # 分为教师端和学生端获取信息
             if flag1 == 1:
@@ -35,6 +35,7 @@ class STUDENTS_MANAGEMENT_SYSTEM:
         except:
             print("账号错误,请重新输入")
             return
+
 
     # 获取唯一的id
     def __get_id__(self, user_name, pwd):

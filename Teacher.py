@@ -1,5 +1,4 @@
 from usually import *
-from global_vars import *
 def main():
     print('1.更改自己的密码')
     print('2.查询学生成绩')
