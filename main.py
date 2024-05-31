@@ -5,12 +5,13 @@ import global_vars
 teacher_account = [123]
 student_account = [234]
 admit_account = ["admit"]
+#管理员默认密码123456
 flag = 0
 
 if __name__ == '__main__':
     while True:
-        user_name = "admit"  # input("请输入账号")
-        pwd = "123456"  # input("请输入密码")
+        user_name = input("请输入账号")
+        pwd =input("请输入密码")
 
         if user_name in student_account:
             flag = 1
