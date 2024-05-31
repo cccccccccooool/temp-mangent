@@ -3,6 +3,7 @@ import requests
 import global_vars
 active = global_vars.active
 flag = global_vars.flag
+api_key=global_vars.api_key
 
 # 报错统一模板
 def error_1():
