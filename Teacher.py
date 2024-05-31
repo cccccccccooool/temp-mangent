@@ -10,7 +10,7 @@ def main():
     if get_request == 0:
         print("已退出")
     elif get_request == 1:
-        change_pwd()
+        change_pwd(0)
     elif get_request == 2:
         select1()
     elif get_request == 3:
@@ -19,4 +19,4 @@ def main():
         update_score()
     else:
         print("输入有误，请重新输入")
-        return main()
+    return main()

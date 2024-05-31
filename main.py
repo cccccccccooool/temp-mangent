@@ -1,12 +1,13 @@
 from SystemDiver import *
 from menu import *
-from global_vars import *
+import global_vars
+
 teacher_account = [123]
 student_account = [234]
-admit_account=[]
+admit_account = ["admit"]
 flag = 0
-import global_vars
-#反正也是个小小程序，所以对内存占用不会做任何优化，比如下面的代码会带来无限循环或无限递归的可能性
+
+# 反正也是个小小程序，所以对内存占用不会做任何优化，比如下面的代码会带来无限循环或无限递归的可能性
 # 菜单
 if __name__ == '__main__':
     while True:
@@ -20,13 +21,13 @@ if __name__ == '__main__':
         elif user_name in teacher_account:
             flag = 2
         elif user_name in admit_account:
-            flag=3
+            flag = 3
         else:
             print("账号未被记录,请联系管理员增添")
             continue
         try:
-            global_vars.active = students_management_system(user_name, pwd,flag)
-            global_vars.flag=flag
+            global_vars.active = STUDENTS_MANAGEMENT_SYSTEM(user_name, pwd, flag)
+            global_vars.flag = flag
         except:
             continue
         # 都不存在则为管理员

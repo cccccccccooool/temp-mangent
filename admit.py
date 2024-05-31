@@ -30,12 +30,28 @@ def change_info(temp_flag):
             change_info(temp_flag)
 
 
-def add_info(flag):
-    pass
+def add_info(teamFlag):
+    if teamFlag:
+        active.add_tec_info()
+    else:
+        active.add_stu_info()
 
+def delete_info(teamFlag):
+    if teamFlag:
+        active.delete_tec_info()
+    else:
+        active.delete_stu_info()
+
+def add_lesson_info():
+    active.add_lesson_info()
+
+def delete_lesson_info():
+    active.delete_lesson_info()
+
+def change_lesson_info():
+    active.change_lesson_info()
 
 def main():
-    print('1.更改自己的密码')
     print('2.查询学生成绩')
     print("3.录入学生成绩")
     print("4.修改学生成绩")
@@ -46,12 +62,13 @@ def main():
     print("9.删除学生信息")
     print("10.删除教师信息")
     print("11.修改其他成员的账号密码")
+    print("12.录入课程信息")
+    print("13.修改课程信息")
+    print("14.删除课程信息")
     print("0.退出成绩管理系统")
     get_request = input("请输入你想要进行的活动")
     if get_request == 0:
         print("已退出")
-    elif get_request == 1:
-        change_pwd()
     elif get_request == 2:
         select1()
     elif get_request == 3:
@@ -63,15 +80,21 @@ def main():
     elif get_request == 6:
         change_info(1)
     elif get_request == 7:
-        pass
+        add_info(0)
     elif get_request == 8:
-        pass
+        add_info(1)
     elif get_request == 9:
-        pass
+        delete_info(0)
     elif get_request == 10:
-        pass
+        delete_info(1)
     elif get_request == 11:
-        pass
+        change_pwd(1)
+    elif get_request == 12:
+        add_lesson_info()
+    elif get_request == 13:
+        change_lesson_info()
+    elif get_request == 14:
+        delete_lesson_info()
     else:
         print("你输入的有误，请重新输入")
-    main()
+    return main()
