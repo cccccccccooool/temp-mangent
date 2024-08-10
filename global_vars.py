@@ -1,3 +1,5 @@
 active = None   #调用数据库的对象
 flag=None       #用于判断身份
-api_key = "sb-2a12cdf57e9fd55f5cbd8169d8a8fae90c92044624ecd031"
+with open("api_key.txt",'r',encoding='utf-8') as fp:
+    api_key = fp.read()
+login_flag = False  #用于判断是否登录

@@ -1,22 +1,43 @@
+import sys
+
 from usually import *
 
 
+def get_buttons(root):
+    actions = [
+        ("更改自己的密码", lambda:change_pwd(0)),
+        ("查询自己成绩", select1),
+        ("ai分析", ai),
+        ("退出成绩管理系统", sys.exit),
+    ]
+    for (text, command) in actions:
+        button = tk.Button(root, text=text, command=command)
+        button.pack()
+
+
 def main():
-    while True:
-        print('1.更改自己的密码')
-        print('2.查询自己成绩')
-        print('3.ai分析')
-        print("0.退出成绩管理系统")
-        get_request = int(input("请输入你想要进行的操作\n"))
-        if get_request == 0:
-            print("已退出")
-            exit(0)
-        elif get_request == 1:
-            change_pwd(0)
-        elif get_request == 2:
-            select1()
-        elif get_request == 3:
-            ai()
-        else:
-            print("输入有误，请重新输入")
-        continue
+    root = tk.Tk()
+    root.title("成绩管理系统")
+    root.geometry("400x400")
+
+    get_buttons(root)
+
+    active = global_vars.active
+    name, id = active.get_info()
+
+    text_lines = [
+        f"{name}_{id}",
+        "欢迎使用成绩管理系统。",
+        "请根据需要点击相应的按钮进行操作。",
+        "如有问题，请联系管理员。"
+    ]
+
+    label_frame = tk.Frame(root)
+    label_frame.pack(pady=10)
+
+    for line in text_lines:
+        label = tk.Label(label_frame, text=line)
+        label.pack(anchor='w')
+
+    root.protocol("WM_DELETE_WINDOW", sys.exit)
+    root.mainloop()
